@@ -1,7 +1,10 @@
 module controller (PCWriteCondEq, PCWriteCondNeq, PCWrite, IMRead, IMWrite, DMRead, DMWrite, MemtoReg, IRWrite, PCSrc, ALUOp, ALUSrcA, ALUSrcB, RegWrite, RegDst, Clk, Reset, Op);
-	input [3:0] Op, Clk, Reset;
-	output [2:0] ALUOp, ALUSrcB, PCSrc, PCWriteCondEq, PCWriteCondNeq, PCWrite, IMRead, IMWrite, DMRead, DMWrite; 		output	[1:0] MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst;
-	reg [2:0] ALUOp, ALUSrcB, PCSrc, PCWriteCondEq, PCWriteCondNeq, PCWrite, IMRead, IMWrite, DMRead, DMWrite; 		   		reg [1:0] MemtoReg, IRWrite, ALUSrcA, RegWrite, RegDst;
+	input [3:0] Op; 
+	input Clk, Reset;
+	output reg [2:0] ALUOp;
+	output reg ALUSrcB, PCSrc, PCWriteCondEq, PCWriteCondNeq, PCWrite, IMRead, IMWrite, DMRead, DMWrite; 			   		output reg [1:0] MemtoReg;
+	output reg IRWrite, ALUSrcA, RegWrite, RegDst;
+	
 	reg [4:0] state = 0, nextstate;
 	
 	parameter S0=0;
